@@ -56,7 +56,7 @@ async function run() {
         });
 
         // ?PUT API
-        app.put("/post/:id", async (req, res) => {
+        app.put("/post/:id", async(req, res) => {
             const query = { _id: new ObjectId(req.params.id) };
             const update = {
                 $set: req.body,
