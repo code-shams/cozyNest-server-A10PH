@@ -27,11 +27,6 @@ const postCollection = client.db("cozynestDB").collection("posts");
 
 async function run() {
     try {
-        // await client.db("admin").command({ ping: 1 });
-        // console.log(
-        //     "Pinged your deployment. You successfully connected to MongoDB!"
-        // );
-
         // ?Get API
         app.get("/post", async (req, res) => {
             let query = {};
