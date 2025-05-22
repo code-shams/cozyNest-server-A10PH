@@ -74,7 +74,7 @@ async function run() {
         });
 
         // ?DELETE API
-        app.delete("/post/:id", async (req, res) => {
+        app.delete("/post/:id", async(req, res) => {
             const query = { _id: new ObjectId(req.params.id) };
             const result = await postCollection.deleteOne(query);
             res.send({
