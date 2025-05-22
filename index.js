@@ -33,6 +33,15 @@ async function run() {
             // * featured post with availablabiliy
             if (req.query.availability) {
                 query = { availability: req.query.availability };
+                const result = await postCollection
+                    .find(query)
+                    .limit(6)
+                    .toArray();
+                res.send({
+                    message: `found the following ${result.length} data`,
+                    data: result,
+                });
+                return;
             }
             // * Individual posts for the details page
             if (req.query._id) {
