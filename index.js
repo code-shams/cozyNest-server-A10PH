@@ -46,7 +46,7 @@ async function run() {
         });
 
         // ?POST API
-        app.post("/post", async (req, res) => {
+        app.post("/post", async(req, res) => {
             const data = req.body;
             const result = await postCollection.insertOne(data);
             res.send({
