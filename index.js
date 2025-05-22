@@ -28,7 +28,7 @@ const postCollection = client.db("cozynestDB").collection("posts");
 async function run() {
     try {
         // ?Get API
-        app.get("/post", async(req, res) => {
+        app.get("/post", async (req, res) => {
             let query = {};
             // * featured post with availablabiliy
             if (req.query.availability) {
@@ -46,7 +46,7 @@ async function run() {
         });
 
         // ?POST API
-        app.post("/post", async(req, res) => {
+        app.post("/post", async (req, res) => {
             const data = req.body;
             const result = await postCollection.insertOne(data);
             res.send({
@@ -56,7 +56,7 @@ async function run() {
         });
 
         // ?PUT API
-        app.put("/post/:id", async(req, res) => {
+        app.put("/post/:id", async (req, res) => {
             const query = { _id: new ObjectId(req.params.id) };
             const update = {
                 $set: req.body,
@@ -74,7 +74,7 @@ async function run() {
         });
 
         // ?DELETE API
-        app.delete("/post/:id", async(req, res) => {
+        app.delete("/post/:id", async (req, res) => {
             const query = { _id: new ObjectId(req.params.id) };
             const result = await postCollection.deleteOne(query);
             res.send({
@@ -86,3 +86,7 @@ async function run() {
     }
 }
 run().catch(console.dir);
+
+app.listen(port, () => {
+    console.log("cozyNest server is running on", port);
+});
