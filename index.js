@@ -47,6 +47,15 @@ async function run() {
             if (req.query._id) {
                 query = { _id: new ObjectId(req.query._id) };
             }
+
+            // * Only user posts
+            if (req.query.name && req.query.email) {
+                query = {
+                    name: req.query.name,
+                    email: req.query.email,
+                };
+            }
+
             const result = await postCollection.find(query).toArray();
             res.send({
                 message: `found the following ${result.length} data`,
