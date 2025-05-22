@@ -28,7 +28,7 @@ const postCollection = client.db("cozynestDB").collection("posts");
 async function run() {
     try {
         // ?Get API
-        app.get("/post", async (req, res) => {
+        app.get("/post", async(req, res) => {
             let query = {};
             // * featured post with availablabiliy
             if (req.query.availability) {
