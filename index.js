@@ -91,6 +91,24 @@ async function run() {
             });
         });
 
+        // ?PATCH API
+        app.patch("/post/:id", async (req, res) => {
+            const query = { _id: new ObjectId(req.params.id) };
+            const update = {
+                $set: req.body,
+            };
+            const options = {};
+            const result = await postCollection.updateOne(
+                query,
+                update,
+                options
+            );
+            res.send({
+                message: `updated likeCount for the post with id ${req.params.id}`,
+                data: result,
+            });
+        });
+
         // ?DELETE API
         app.delete("/post/:id", async (req, res) => {
             const query = { _id: new ObjectId(req.params.id) };
